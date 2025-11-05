@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    background-image: url('../static/images/transparent_background.jpg'); /* Use the path to your local image file */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+/* The transparent overlay is removed completely. */
+
+.header {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    color: #333;
+    z-index: 2;
+}
+
+.header h1 {
+    font-size: 2em;
+    margin: 0;
+    padding: 10px 0;
+    color: #004d99;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    z-index: 1;
+    margin-top: 100px;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card-title {
+    color: #333;
+    margin-bottom: 20px;
+}
+/* ... all other CSS rules ... */

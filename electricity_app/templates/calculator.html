@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tariff Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>West Bengal State Electricity Distribution Company Ltd.</h1>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h1 class="card-title">Tariff Calculator</h1>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flash-messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <form action="{{ url_for('display_bill') }}" method="post" class="form">
+                <div class="input-group">
+                    <label for="last_reading">Last Reading (Units):</label>
+                    <input type="text" id="last_reading" name="last_reading" required>
+                </div>
+                <div class="input-group">
+                    <label for="current_reading">Current Reading (Units):</label>
+                    <input type="text" id="current_reading" name="current_reading" required>
+                </div>
+                <button type="submit" class="btn">Display Bill</button>
+            </form>
+            <p class="link">
+                <a href="{{ url_for('logout') }}" class="btn-secondary">Logout</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

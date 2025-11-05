@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Bill</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .bill-details {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .bill-details p {
+            font-size: 1.1em;
+            margin: 10px 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .total-amount {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #28a745;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>West Bengal State Electricity Distribution Company Ltd.</h1>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h1 class="card-title">Your Electricity Bill</h1>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flash-messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <div class="bill-details">
+                <p><strong>Username:</strong> {{ bill.username }}</p>
+                <p><strong>Units Consumed:</strong> {{ bill.units_consumed | round(2) }}</p>
+                <p><strong>Energy Charge:</strong> Rs. {{ bill.energy_charge | round(2) }}</p>
+                <p><strong>Fixed Charge:</strong> Rs. {{ bill.fixed_charge | round(2) }}</p>
+                <p><strong>GST (5%):</strong> Rs. {{ bill.gst_amount | round(2) }}</p>
+            </div>
+            <p class="total-amount">Total Payable: Rs. {{ bill.final_bill | round(2) }}</p>
+            <p class="link" style="margin-top: 30px;">
+                <a href="{{ url_for('calculator_page') }}" class="btn-secondary">Recalculate Bill</a>
+            </p>
+            <p class="link">
+                <a href="{{ url_for('logout') }}" class="btn-secondary">Logout</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

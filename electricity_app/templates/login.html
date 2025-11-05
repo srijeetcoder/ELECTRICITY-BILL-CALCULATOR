@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>West Bengal State Electricity Distribution Company Ltd.</h1>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h1 class="card-title">User Login</h1>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flash-messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <form action="/login" method="post" class="form">
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <p class="link">
+                <a href="{{ url_for('register_page') }}">Don't have an account? Register</a>
+            </p>
+            <p class="link">
+                <a href="{{ url_for('forgot_password_request') }}">Forgot Password?</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

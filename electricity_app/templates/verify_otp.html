@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify OTP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>West Bengal State Electricity Distribution Company Ltd.</h1>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h1 class="card-title">Verify OTP</h1>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flash-messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <p>An OTP has been sent to your email. Please enter it below.</p>
+            <form action="/verify_otp" method="post" class="form">
+                <div class="input-group">
+                    <label for="otp">Enter OTP:</label>
+                    <input type="text" id="otp" name="otp" required>
+                </div>
+                <button type="submit" class="btn">Verify OTP</button>
+            </form>
+            <p class="link">
+                <a href="{{ url_for('forgot_password_request') }}">Resend OTP</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
