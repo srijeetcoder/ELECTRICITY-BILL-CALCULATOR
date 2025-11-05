@@ -17,8 +17,8 @@ app.secret_key = 'your_secret_key_here'
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'srijeetchatterjee2008@gmail.com'
-app.config['MAIL_PASSWORD'] = 'lxgr ixvo bvgf cupz'
+app.config['MAIL_USERNAME'] = 'YOUR EMAIL'  #The email you will use for sending bill to the recipient
+app.config['MAIL_PASSWORD'] = 'YOUR APP PASSWORD' #App password will be in this format - abcd efgh ijkl
 mail = Mail(app)
 
 CSV_FILE = 'users.csv'
@@ -336,4 +336,5 @@ def reset_password():
     return redirect(url_for('login_page'))
 
 if __name__ == '__main__':
+
     app.run(debug=True)
